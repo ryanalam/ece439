@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fibonacci Calculator</title>
+</head>
+<body>
+    <center><h1>Fibonacci Calculator</h1></center>
+    
+    <center><form method="post" action="{% url 'calculate_fibonacci' %}">
+        {% csrf_token %}
+        <label for="number_input">Enter a number:</label>
+        <input type="number" name="number" id="number_input" required>
+        <br></br>
+        <button type="submit">Calculate Fibonacci</button>
+    </form>
+</center>
+
+    {% if fibonacci_result %}
+    <center>
+    <h3>Fibonacci of {{number}} is : {{ fibonacci_result }}</h3>
+    {% endif %}
+    </center>
+
+    {% if error_message %}
+    <p>{{ error_message }}</p>
+    {% endif %}
+    
+</body>
+</html>

@@ -1,0 +1,18 @@
+.form-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Add spacing between fields */
+}
+
+.form-field label {
+    width: 620px; /* Adjust the label width as needed */
+    margin-right: 10px; /* Add spacing between label and input */
+    text-align: right; /* Align the label text to the right */
+}
+
+.form-field textarea {
+    flex-grow: 1; /* Allow the input to grow and take up remaining space */
+    width: auto; /* Let the input determine its own width */
+    padding: 5px; /* Add padding to the input */
+    border: 1px solid #ccc; /* Add a border for clarity */
+}

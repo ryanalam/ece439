@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'crud.css' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+</head>
+
+<body>
+    <br>
+    <center>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Profession</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+
+            {% for i in data %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.address }}</td>
+                <td>{{ i.profession }}</td>
+                <td>{{ i.telephone_number }}</td>
+                <td>{{ i.email }}</td>
+                <td>
+                    <a href="{% url 'update' i.id %}"><button>Update</button></a>
+                    <a href="{% url 'delete' i.id %}"><button>Delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+
+<br></br>
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <!-- Display error messages here -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <center><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></center>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <div class="form-field">
+        <label for="{{ fm.id.id_for_label }}">Id:</label>
+        {{ fm.id }}
+    </div>
+    <div class="form-field">
+        <label for="{{ fm.name.id_for_label }}">Name:</label>
+        {{ fm.name }}
+    </div>
+    <div class="form-field">
+        <label for="{{ fm.address.id_for_label }}">Address:</label>
+        {{ fm.address }}
+    </div>
+    <div class="form-field">
+        <label for="{{ fm.profession.id_for_label }}">Profession:</label>
+        {{ fm.profession }}
+    </div>
+    <div class="form-field">
+        <label for="{{ fm.telephone_number.id_for_label }}">Telephone Number:</label>
+        {{ fm.telephone_number }}
+    </div>
+    <div class="form-field">
+        <label for="{{ fm.email.id_for_label }}">Email:</label>
+        {{ fm.email }}
+    </div>
+
+    <center><button type="submit">Submit</button></center>
+</form>
+
+</html>
